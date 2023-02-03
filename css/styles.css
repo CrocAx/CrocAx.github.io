@@ -1,0 +1,591 @@
+#name{
+    float: right;
+}
+
+#a2{
+    display: block;
+    text-decoration: none;
+    color:white;
+    float: left;
+    height: 60px;
+    width: 60px;
+    padding: 0px 0px;
+}
+
+.JMname{
+    display: block;
+    padding: 7px 15px; 
+    text-decoration: none;
+    font-size: 20pt;
+    color:black;
+    float: left;
+}
+
+body{
+    margin: auto;
+    /*background-color: rgba(22, 88, 16, 0.842);*/
+    /* background-image: url(../img/c11.jpg);
+    background-repeat: repeat;
+    background-size:cover;
+    overflow: visible; */
+
+    background: url(../img/c11.jpg) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+li{
+    display: inline;    
+}
+
+hr{
+    border-color: black;
+    border-width: 1.5px;
+}
+
+li a{
+    display: block;
+    padding: 16px 20px;
+    text-decoration: none;
+    color:white;
+    /* float: left; */
+}
+
+#Home{
+    margin-left: auto;
+    margin-right: auto;
+    align-items: center;
+    border-radius: 5px;
+    min-height: 800px;
+    overflow: auto;
+    padding: 40px 0px;
+    background-color: rgb(248, 207, 130);
+}
+
+.patches{
+    position: relative;
+    padding:45px 35px;
+    /* margin-top: 3%; */
+    width: 650px;
+    margin: auto;
+    float: right;
+    height: auto;
+    margin-right: 3%;
+    background-color: rgba(250, 235, 215, 0.74);
+    border-radius: 10px;
+}
+
+.bar{
+    margin: auto;
+    height: auto;
+    width: 600px;
+    position: relative;
+    top:13%;
+    padding: 12px 10px;
+}
+
+.bar h1{
+    margin: auto;
+}
+
+
+.bar p1{
+    font-size: 14pt;
+
+}
+
+.patches p{
+    margin: auto;
+    position: relative;
+    font-size: 18pt;
+    font-weight: bold;
+    top:10%; 
+}
+
+.teststart{
+    position: relative;
+    top: 100px;
+    left: 150px;
+    margin: auto;
+    float: left;
+    gap: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.teststart button{
+    background-color: rgba(250, 235, 215, 0.74);
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+    width: 200px;
+    height: 100px;
+    font-size: 18pt;
+}
+
+.teststart button:hover{
+    animation: fade 0.3s forwards;
+}
+
+.teststart button:active {
+    transform: translateY(3px);
+  }
+
+
+@keyframes fade {
+    0%{
+       background-color: rgba(250, 235, 215, 0.74);
+    }
+    100%{
+        color:white;
+        background-color: rgba(138, 129, 118, 0.863);
+    }
+}
+
+
+
+#About{
+    margin-left: auto;
+    margin-right: auto;
+    align-items: center;
+    border-radius: 5px;
+    background-color: rgb(248, 207, 130);
+    min-height: 800px;
+    overflow: auto;
+    
+}
+
+#contact{
+    margin-left: auto;
+    margin-right: auto;
+    align-items: center;
+    border-radius: 5px;
+    min-height: 800px;
+    overflow: auto;
+    background-color: rgb(248, 207, 130);
+    
+}
+
+#contact a{
+}
+
+.Why{
+    background-color: rgb(60, 17, 160);
+    width: 300px;
+    padding:50px 40px;
+    clip-path: polygon(0% 15%, 15% 15%, 15% 0%, 85% 0%, 85% 15%, 100% 15%, 100% 85%, 85% 85%, 85% 100%, 15% 100%, 15% 85%, 0% 85%);
+    position: relative;
+    left:20%;
+    top:75px;
+    animation: show 2s forwards;
+    opacity: 0%;
+    color: white;
+    text-shadow: 2px 1px black;  
+
+}
+
+.Why h1{
+    margin: auto;
+}
+
+.Why a{
+    
+    text-align: justify;
+    color:red;
+}
+
+.What{   
+    background-color: rgb(255, 0, 0);
+    width: 300px;
+    padding: 50px 40px;
+    clip-path: polygon(0% 15%, 15% 15%, 15% 0%, 85% 0%, 85% 15%, 100% 15%, 100% 85%, 85% 85%, 85% 100%, 15% 100%, 15% 85%, 0% 85%);
+    position: relative;
+    left:450px;
+    top:27px;
+    animation: show 2s forwards;
+    animation-delay: 0.5s;
+    opacity: 0%;
+    color: white;
+    text-shadow: 2px 1px black;  
+}
+
+.What a{
+    text-align: justify;
+
+}
+
+.What h1{
+    margin: auto;
+}
+
+.Who{
+    background-color: rgb(51, 255, 0);
+    width: 300px;
+    padding: 50px 40px;
+    clip-path: polygon(0% 15%, 15% 15%, 15% 0%, 85% 0%, 85% 15%, 100% 15%, 100% 85%, 85% 85%, 85% 100%, 15% 100%, 15% 85%, 0% 85%);
+    position: relative;
+    left: 705px;
+    top:-69px;
+    animation: show 2s forwards;
+    animation-delay: 1s;
+    opacity: 0%;
+    color: white;
+    text-shadow: 2px 1px black;   
+}
+
+
+.Who a{
+    text-align: justify;
+    
+}
+
+.Who h1{
+    margin: auto;
+}
+
+@keyframes show{
+    0%{
+        opacity: 0%;
+    }
+
+    100%{
+        opacity: 100%;
+    }
+}
+
+#blog{
+    margin-left: auto;
+    margin-right: auto;
+    align-items: center;
+    min-height: 800px;
+    border-radius: 5px;
+    overflow: auto;
+    padding: 40px 0px;
+    background-color: rgb(248, 207, 130);
+}
+
+.bloglogs{
+    position: relative;
+    padding:45px 45px;
+    margin:auto;
+    width: 1000px;
+    height: auto;
+    background-color: rgba(250, 235, 215, 0.74);
+    border-radius: 10px;
+}
+
+.bloglogs p{
+    margin: auto;
+    position: relative;
+    font-size: 24pt;
+    font-weight: bold;
+    top:10%; 
+}
+
+.blogbar{
+    margin: auto;
+    left:-10px;
+    top:15px;
+    height: auto;
+    width: 900px;
+    position: relative;
+    padding: 12px 10px;
+}
+
+.blogbar h1{
+    margin: auto;
+}
+
+
+.blogbar p1{
+    font-size: 14pt;
+
+}
+
+
+.wrap{
+    margin: auto;
+    width: 1201px;
+    top:100px;
+    position: relative;
+}
+
+footer{
+    padding: 20px;
+
+}
+
+
+.contac{
+    position: relative;
+    padding:10px 12px;
+    margin-top: 5%;
+    float: left;
+    width: 300px;
+    margin-left: 3%;
+    background-color: rgba(250, 235, 215, 0.74);
+    border-radius: 10px;
+}
+
+.contac h1{
+    margin: auto;
+}
+
+.usr{
+    margin-left: auto;
+    margin-right: auto;
+    align-items: center;
+    background-color: rgb(248, 207, 130);
+    width: max-content;
+    padding: 10px;
+    border-radius: 15px;
+    font-weight: bold;
+}
+
+.usr button:hover {
+    background-color: rgba(211, 150, 36, 0.548);;
+    transform: scale(1.12);
+}
+
+
+
+#manage{
+    margin-left: auto;
+    margin-right: auto;
+    align-items: center;
+    min-height: 800px;
+    overflow: auto;
+    padding: 40px 0px;
+    background-color: rgb(248, 207, 130);
+    
+}
+
+.jobheader{
+    display: flex;
+    flex-wrap: wrap;
+    /* flex-direction: column; */
+    /* align-items: center; */
+    gap: 10px;
+    height: 95px;
+}
+
+.jobscontainer{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    position: relative;
+    overflow:visible;
+    /* margin: auto; */
+    /* height: auto; */
+    font-family: 'Trebuchet MS', sans-serif;
+    /*background-color: rgba(0, 0, 255, 0.384);*/
+}
+
+/* .column-old{
+    margin-top: 30px;
+    flex-basis: 20%;
+    background-color: #ddd;
+    min-height: 650px;
+    overflow: visible;
+    padding: 20px;
+    border-radius: 10px;
+} */
+
+.column h1{
+    text-align: center;
+    font-size: 22px;
+}
+
+.item {
+    background: #fff;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+    margin: 10px;
+    padding: 20px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.hide{
+    display: none;
+}
+
+#col_header{
+    width: 360.292px;
+    background-color: #ddd;
+    padding: 20px;
+    border-radius: 10px;
+    margin-left: 25px;
+    text-align: center;
+}
+
+
+.column {
+    margin-left: 25px;
+    /* width: 500px; */
+    /* padding-bottom: 100px; */
+    /* margin-top: 30px; */
+    flex-basis: 30%;
+    background-color: #ddd;
+    min-height: 650px;
+    overflow: visible;
+    padding: 20px;
+    border-radius: 10px;
+  }
+
+  .portlet {
+    padding: 0.5em;
+    /* margin-left: 2.5em; */
+    margin-bottom: 5px;
+  }
+
+  .portlet-header:active{
+    cursor: grabbing;
+  }
+
+  .portlet-header {
+    padding: 0.2em 0.3em;
+    margin-bottom: 0.5em;
+    position: relative;
+    cursor: grab;
+  }
+
+  .portlet-toggle {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    margin-top: -8px;
+  }
+
+  .portlet-content {
+    padding: 1em;
+  }
+
+  .portlet-placeholder {
+    border: 1px solid black;
+    background: rgba(151, 32, 32, 0.37);
+    height: 50px;
+    width: 150px;
+    margin-left: 2.5em;
+  }
+
+
+  #set {
+    clear:both;
+    float:left; 
+    width: 368px;
+    }
+
+.imgg{
+    float:right;
+    height:20px;
+    width:15px;
+    display: none;
+}
+
+.kanban{
+    display: flex;
+    padding: 30px;
+    margin: auto;
+    width: 950px;
+    background-color: rgb(248, 207, 130);
+    border-radius: 5px;
+}
+
+.kanban * {
+    font-family: sans-serif;
+}
+
+.kanban__column {
+    flex: 1;
+}
+
+.kanban__column:not(:last-child) {
+    margin-right: 30px;
+}
+
+.kanban__column-title {
+    margin-bottom: 20px;
+    font-size: 30px;
+    color: rgb(0, 0, 0);
+    user-select: none;
+    text-align: center;
+}
+
+.kanban__item-input {
+    padding: 10px 15px;
+    box-sizing: border-box;
+    background-color: rgba(250, 235, 215, 0.74);
+    border-radius: 5px;
+    cursor: pointer;
+    max-width: 276.67px;
+    box-shadow: 0 2px 3px 0 rgba(0,0,0,0.24), 0 2px 3px 0 rgba(0,0,0,0.19);
+    font-weight: bold;
+}
+
+.kanban__dropzone {
+    height: 10px;
+    transition: background 0.15s, height 0.15s;
+}
+
+.kanban__dropzone--active {
+    height: 20px;
+    background: rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+}
+
+.kanban__add-item {
+    width: 100%;
+    padding: 10px 0;
+    font-size: 24px;
+    color: rgba(0, 0, 0, 0.637);
+    background: rgba(0, 0, 0, 0.192);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#display-date{
+    color: white;
+    font-size: 24pt;
+    text-align: center;
+}
+
+/*
+-- Snow --
+*/
+.snow, .snow:before, .snow:after {
+    position: absolute;
+    top: -600px;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-image: radial-gradient(3px 3px at 556px 571px, white 50%, rgba(0, 0, 0, 0)), radial-gradient(4px 4px at 440px 24px, rgba(255, 255, 255, 0.6) 50%, rgba(0, 0, 0, 0)), radial-gradient(6px 6px at 445px 461px, rgba(255, 255, 255, 0.9) 50%, rgba(0, 0, 0, 0)), radial-gradient(3px 3px at 378px 33px, rgba(255, 255, 255, 0.8) 50%, rgba(0, 0, 0, 0)), radial-gradient(4px 4px at 229px 220px, rgba(255, 255, 255, 0.7) 50%, rgba(0, 0, 0, 0)), radial-gradient(6px 6px at 375px 594px, rgba(255, 255, 255, 0.6) 50%, rgba(0, 0, 0, 0)), radial-gradient(3px 3px at 334px 459px, rgba(255, 255, 255, 0.9) 50%, rgba(0, 0, 0, 0)), radial-gradient(4px 4px at 78px 13px, rgba(255, 255, 255, 0.9) 50%, rgba(0, 0, 0, 0)), radial-gradient(4px 4px at 455px 569px, rgba(255, 255, 255, 0.6) 50%, rgba(0, 0, 0, 0)), radial-gradient(5px 5px at 65px 356px, rgba(255, 255, 255, 0.8) 50%, rgba(0, 0, 0, 0)), radial-gradient(6px 6px at 562px 293px, rgba(255, 255, 255, 0.6) 50%, rgba(0, 0, 0, 0)), radial-gradient(4px 4px at 269px 88px, white 50%, rgba(0, 0, 0, 0)), radial-gradient(6px 6px at 201px 528px, rgba(255, 255, 255, 0.6) 50%, rgba(0, 0, 0, 0)), radial-gradient(6px 6px at 197px 345px, rgba(255, 255, 255, 0.8) 50%, rgba(0, 0, 0, 0)), radial-gradient(6px 6px at 435px 229px, rgba(255, 255, 255, 0.6) 50%, rgba(0, 0, 0, 0)), radial-gradient(6px 6px at 549px 441px, rgba(255, 255, 255, 0.8) 50%, rgba(0, 0, 0, 0)), radial-gradient(5px 5px at 519px 287px, rgba(255, 255, 255, 0.9) 50%, rgba(0, 0, 0, 0)), radial-gradient(3px 3px at 95px 518px, rgba(255, 255, 255, 0.9) 50%, rgba(0, 0, 0, 0)), radial-gradient(6px 6px at 297px 231px, white 50%, rgba(0, 0, 0, 0)), radial-gradient(5px 5px at 465px 396px, rgba(255, 255, 255, 0.6) 50%, rgba(0, 0, 0, 0)), radial-gradient(6px 6px at 327px 337px, rgba(255, 255, 255, 0.8) 50%, rgba(0, 0, 0, 0)), radial-gradient(5px 5px at 394px 546px, white 50%, rgba(0, 0, 0, 0)), radial-gradient(6px 6px at 405px 561px, rgba(255, 255, 255, 0.6) 50%, rgba(0, 0, 0, 0)), radial-gradient(5px 5px at 422px 66px, rgba(255, 255, 255, 0.6) 50%, rgba(0, 0, 0, 0)), radial-gradient(4px 4px at 148px 501px, rgba(255, 255, 255, 0.8) 50%, rgba(0, 0, 0, 0)), radial-gradient(3px 3px at 95px 324px, white 50%, rgba(0, 0, 0, 0)), radial-gradient(5px 5px at 366px 61px, rgba(255, 255, 255, 0.8) 50%, rgba(0, 0, 0, 0)), radial-gradient(3px 3px at 291px 111px, rgba(255, 255, 255, 0.7) 50%, rgba(0, 0, 0, 0)), radial-gradient(6px 6px at 545px 493px, rgba(255, 255, 255, 0.9) 50%, rgba(0, 0, 0, 0)), radial-gradient(5px 5px at 218px 456px, rgba(255, 255, 255, 0.8) 50%, rgba(0, 0, 0, 0)), radial-gradient(4px 4px at 116px 137px, white 50%, rgba(0, 0, 0, 0)), radial-gradient(3px 3px at 256px 114px, rgba(255, 255, 255, 0.7) 50%, rgba(0, 0, 0, 0)), radial-gradient(5px 5px at 589px 340px, white 50%, rgba(0, 0, 0, 0)), radial-gradient(6px 6px at 245px 412px, white 50%, rgba(0, 0, 0, 0)), radial-gradient(5px 5px at 202px 463px, rgba(255, 255, 255, 0.7) 50%, rgba(0, 0, 0, 0)), radial-gradient(6px 6px at 178px 389px, rgba(255, 255, 255, 0.7) 50%, rgba(0, 0, 0, 0)), radial-gradient(4px 4px at 224px 289px, rgba(255, 255, 255, 0.7) 50%, rgba(0, 0, 0, 0)), radial-gradient(3px 3px at 492px 465px, rgba(255, 255, 255, 0.8) 50%, rgba(0, 0, 0, 0)), radial-gradient(3px 3px at 218px 293px, white 50%, rgba(0, 0, 0, 0)), radial-gradient(4px 4px at 68px 277px, rgba(255, 255, 255, 0.8) 50%, rgba(0, 0, 0, 0)), radial-gradient(3px 3px at 424px 457px, rgba(255, 255, 255, 0.8) 50%, rgba(0, 0, 0, 0)), radial-gradient(6px 6px at 534px 504px, white 50%, rgba(0, 0, 0, 0)), radial-gradient(6px 6px at 66px 281px, rgba(255, 255, 255, 0.9) 50%, rgba(0, 0, 0, 0)), radial-gradient(6px 6px at 304px 453px, rgba(255, 255, 255, 0.7) 50%, rgba(0, 0, 0, 0)), radial-gradient(3px 3px at 350px 215px, rgba(255, 255, 255, 0.7) 50%, rgba(0, 0, 0, 0)), radial-gradient(5px 5px at 558px 223px, rgba(255, 255, 255, 0.6) 50%, rgba(0, 0, 0, 0)), radial-gradient(4px 4px at 549px 284px, rgba(255, 255, 255, 0.7) 50%, rgba(0, 0, 0, 0)), radial-gradient(6px 6px at 70px 576px, rgba(255, 255, 255, 0.9) 50%, rgba(0, 0, 0, 0)), radial-gradient(4px 4px at 462px 101px, white 50%, rgba(0, 0, 0, 0)), radial-gradient(4px 4px at 535px 322px, rgba(255, 255, 255, 0.7) 50%, rgba(0, 0, 0, 0)), radial-gradient(3px 3px at 157px 303px, rgba(255, 255, 255, 0.8) 50%, rgba(0, 0, 0, 0)), radial-gradient(5px 5px at 532px 352px, rgba(255, 255, 255, 0.7) 50%, rgba(0, 0, 0, 0)), radial-gradient(3px 3px at 85px 462px, rgba(255, 255, 255, 0.8) 50%, rgba(0, 0, 0, 0)), radial-gradient(3px 3px at 320px 374px, rgba(255, 255, 255, 0.6) 50%, rgba(0, 0, 0, 0)), radial-gradient(6px 6px at 51px 489px, rgba(255, 255, 255, 0.8) 50%, rgba(0, 0, 0, 0)), radial-gradient(3px 3px at 236px 265px, rgba(255, 255, 255, 0.6) 50%, rgba(0, 0, 0, 0)), radial-gradient(5px 5px at 259px 593px, rgba(255, 255, 255, 0.7) 50%, rgba(0, 0, 0, 0)), radial-gradient(3px 3px at 548px 19px, white 50%, rgba(0, 0, 0, 0)), radial-gradient(3px 3px at 298px 242px, rgba(255, 255, 255, 0.8) 50%, rgba(0, 0, 0, 0)), radial-gradient(3px 3px at 17px 550px, rgba(255, 255, 255, 0.7) 50%, rgba(0, 0, 0, 0)), radial-gradient(6px 6px at 445px 28px, rgba(255, 255, 255, 0.8) 50%, rgba(0, 0, 0, 0)), radial-gradient(5px 5px at 255px 137px, white 50%, rgba(0, 0, 0, 0)), radial-gradient(5px 5px at 565px 210px, rgba(255, 255, 255, 0.9) 50%, rgba(0, 0, 0, 0)), radial-gradient(4px 4px at 93px 166px, rgba(255, 255, 255, 0.7) 50%, rgba(0, 0, 0, 0)), radial-gradient(5px 5px at 224px 486px, rgba(255, 255, 255, 0.8) 50%, rgba(0, 0, 0, 0)), radial-gradient(5px 5px at 275px 559px, rgba(255, 255, 255, 0.9) 50%, rgba(0, 0, 0, 0)), radial-gradient(3px 3px at 486px 255px, rgba(255, 255, 255, 0.7) 50%, rgba(0, 0, 0, 0)), radial-gradient(6px 6px at 481px 514px, white 50%, rgba(0, 0, 0, 0)), radial-gradient(5px 5px at 468px 59px, white 50%, rgba(0, 0, 0, 0)), radial-gradient(6px 6px at 490px 377px, white 50%, rgba(0, 0, 0, 0));
+    background-size: 600px 600px;
+    animation: snow 3s linear infinite;
+    content: "";
+    
+  }
+  
+  .snow:after {
+    margin-left: -200px;
+    opacity: 0.4;
+    animation-duration: 6s;
+    animation-direction: reverse;
+    filter: blur(3px);
+  }
+  
+  .snow:before {
+    animation-duration: 9s;
+    animation-direction: reverse;
+    margin-left: -300px;
+    opacity: 0.65;
+    filter: blur(1.5px);
+  }
+  
+  @keyframes snow {
+    to {
+      transform: translateY(600px);
+    }
+  }
