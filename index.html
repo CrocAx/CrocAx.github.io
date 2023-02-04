@@ -92,8 +92,7 @@ function handleClick(event) {
 }
 
 function checkForWin() {
-  const winningCombinations = [
-    [0, 1, 2],
+  const winningCombinations = [    [0, 1, 2],
     [3, 4, 5],
     [6, 7, 8],
     [0, 3, 6],
@@ -113,8 +112,36 @@ function checkForWin() {
       continue;
     }
 
+    if (squareA.textContent === squareB.textContent &&
+        squareA.textContent === squareC.textContent) {
+      squareA.classList.add('winner');
+      squareB.classList.add('winner');
+      squareC.classList.add('winner');
+
+      const line = document.createElement('div');
+      line.classList.add('win-line');
+      line.style.top = `${(a / 3) * 100}px`;
+      line.style.left = `${(a % 3) * 100}px`;
+      document.querySelector('.board').appendChild(line);
+
+      resultElement.textContent = `${squareA.textContent} won!`;
+    }
   }
 }
+
+function resetBoard() {
+  for (const square of squares) {
+    square.textContent = '';
+    square.classList.remove('winner');
+  }
+  resultElement.textContent = '';
+  xIsNext = true;
+  const lines = document.querySelectorAll('.win-line');
+  for (const line of lines) {
+    line.remove();
+  }
+}
+
 </script>
 
 </html>
