@@ -46,17 +46,21 @@
     <div class="square"></div>
     <div class="square"></div>
   </div>
+  <button id="reset-button">Reset Board</button>
 </div>
 
 </body>
 
 <script>
 const squares = document.querySelectorAll('.square');
+const resetButton = document.querySelector('#reset-button');
 let xIsNext = true;
 
 for (const square of squares) {
   square.addEventListener('click', handleClick);
 }
+
+resetButton.addEventListener('click', resetBoard);
 
 function handleClick(event) {
   const square = event.target;
@@ -67,6 +71,14 @@ function handleClick(event) {
   square.textContent = xIsNext ? 'X' : 'O';
   xIsNext = !xIsNext;
 }
+
+function resetBoard() {
+  for (const square of squares) {
+    square.textContent = '';
+  }
+  xIsNext = true;
+}
+
 
 </script>
 
