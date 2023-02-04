@@ -1,22 +1,73 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <title>My Website</title>
-    <style>
-      /* Add your CSS styles here */
-      body {
-        font-family: Arial, sans-serif;
-        background-color: #F0F0F0;
-      }
-      h1 {
-        color: #333;
-        text-align: center;
-        margin-top: 50px;
-      }
-    </style>
-  </head>
-  <body>
-    <h1>Welcome to My Website</h1>
-  </body>
+
+<head>
+  <title>Our Company</title>
+</head>
+
+<style>
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.board {
+  display: flex;
+  flex-wrap: wrap;
+  width: 300px;
+  height: 300px;
+  border: 1px solid black;
+}
+
+.square {
+  width: 100px;
+  height: 100px;
+  border: 1px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 36px;
+}
+</style>
+
+<body>
+
+<div class="container">
+  <div class="board">
+    <div class="square"></div>
+    <div class="square"></div>
+    <div class="square"></div>
+    <div class="square"></div>
+    <div class="square"></div>
+    <div class="square"></div>
+    <div class="square"></div>
+    <div class="square"></div>
+    <div class="square"></div>
+  </div>
+</div>
+
+</body>
+
+<script>
+const squares = document.querySelectorAll('.square');
+let xIsNext = true;
+
+for (const square of squares) {
+  square.addEventListener('click', handleClick);
+}
+
+function handleClick(event) {
+  const square = event.target;
+  const currentValue = square.textContent;
+  if (currentValue) {
+    return;
+  }
+  square.textContent = xIsNext ? 'X' : 'O';
+  xIsNext = !xIsNext;
+}
+
+</script>
+
 </html>
