@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <title>Our Company</title>
+  <title>AI TIC TAC TOE</title>
 </head>
 
 <style>
@@ -11,6 +11,7 @@
   justify-content: center;
   align-items: center;
   height: 100vh;
+  flex-direction: column;
 }
 
 .board {
@@ -20,6 +21,7 @@
   width: 300px;
   height: 300px;
   border: 1px solid black;
+  position: relative;
 }
 
 .square {
@@ -30,29 +32,45 @@
   font-size: 36px;
 }
 
+.win-line {
+  position: absolute;
+  height: 100px;
+  width: 3px;
+  background-color: green;
+  transform: rotate(45deg);
+}
+
+#result {
+  margin-top: 20px;
+  font-size: 24px;
+}
+
 </style>
 
 <body>
 
-<div class="container">
-  <div class="board">
-    <div class="square"></div>
-    <div class="square"></div>
-    <div class="square"></div>
-    <div class="square"></div>
-    <div class="square"></div>
-    <div class="square"></div>
-    <div class="square"></div>
-    <div class="square"></div>
-    <div class="square"></div>
+  <div class="container">
+    <div class="board">
+      <div class="square"></div>
+      <div class="square"></div>
+      <div class="square"></div>
+      <div class="square"></div>
+      <div class="square"></div>
+      <div class="square"></div>
+      <div class="square"></div>
+      <div class="square"></div>
+      <div class="square"></div>
+    </div>
+    <div id="result"></div>
+    <button id="reset-button">Reset Board</button>
   </div>
-  <button id="reset-button">Reset Board</button>
-</div>
+  
 
 </body>
 
 <script>
 const squares = document.querySelectorAll('.square');
+const resultElement = document.querySelector('#result');
 const resetButton = document.querySelector('#reset-button');
 let xIsNext = true;
 
@@ -70,16 +88,33 @@ function handleClick(event) {
   }
   square.textContent = xIsNext ? 'X' : 'O';
   xIsNext = !xIsNext;
+  checkForWin();
 }
 
-function resetBoard() {
-  for (const square of squares) {
-    square.textContent = '';
+function checkForWin() {
+  const winningCombinations = [
+    [0, 1, 2],
+    [3, 4, 5],
+    [6, 7, 8],
+    [0, 3, 6],
+    [1, 4, 7],
+    [2, 5, 8],
+    [0, 4, 8],
+    [2, 4, 6]
+  ];
+
+  for (const combination of winningCombinations) {
+    const [a, b, c] = combination;
+    const squareA = squares[a];
+    const squareB = squares[b];
+    const squareC = squares[c];
+
+    if (squareA.textContent === '') {
+      continue;
+    }
+
   }
-  xIsNext = true;
 }
-
-
 </script>
 
 </html>
