@@ -92,7 +92,8 @@ function handleClick(event) {
 }
 
 function checkForWin() {
-  const winningCombinations = [    [0, 1, 2],
+  const winningCombinations = [
+    [0, 1, 2],
     [3, 4, 5],
     [6, 7, 8],
     [0, 3, 6],
@@ -101,6 +102,8 @@ function checkForWin() {
     [0, 4, 8],
     [2, 4, 6]
   ];
+
+  let isWin = false;
 
   for (const combination of winningCombinations) {
     const [a, b, c] = combination;
@@ -114,27 +117,18 @@ function checkForWin() {
 
     if (squareA.textContent === squareB.textContent &&
         squareA.textContent === squareC.textContent) {
-      squareA.classList.add('winner');
-      squareB.classList.add('winner');
-      squareC.classList.add('winner');
-
-      const line = document.createElement('div');
-      line.classList.add('win-line');
-      const aRect = squareA.getBoundingClientRect();
-      const bRect = squareB.getBoundingClientRect();
-      const left = Math.min(aRect.left, bRect.left);
-      const top = Math.min(aRect.top, bRect.top);
-      const width = Math.abs(aRect.left - bRect.left);
-      const height = Math.abs(aRect.top - bRect.top);
-      line.style.left = `${left}px`;
-      line.style.top = `${top}px`;
-      line.style.width = `${width}px`;
-      line.style.height = `${height}px`;
-      line.style.transform = `rotate(${45 * (c - a)}deg)`;
-      document.querySelector('.board').appendChild(line);
-
       resultElement.textContent = `${squareA.textContent} won!`;
+      isWin = true;
+      break;
     }
+  }
+
+  if (!isWin && squares.every(square => square.textContent !== '')) {
+    resultElement.textContent = 'Draw!';
+  }
+
+  if (isWin || squares.every(square => square.textContent !== '')) {
+    squares.forEach(square => square.removeEventListener('click', handleClick));
   }
 }
 
