@@ -124,8 +124,8 @@ function checkForWin() {
       const bRect = squareB.getBoundingClientRect();
       const left = Math.min(aRect.left, bRect.left);
       const top = Math.min(aRect.top, bRect.top);
-      const width = Math.max(aRect.right, bRect.right) - left;
-      const height = Math.max(aRect.bottom, bRect.bottom) - top;
+      const width = Math.abs(aRect.left - bRect.left);
+      const height = Math.abs(aRect.top - bRect.top);
       line.style.left = `${left}px`;
       line.style.top = `${top}px`;
       line.style.width = `${width}px`;
@@ -137,7 +137,6 @@ function checkForWin() {
     }
   }
 }
-
 
 function resetBoard() {
   for (const square of squares) {
