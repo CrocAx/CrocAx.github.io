@@ -69,7 +69,7 @@
 </body>
 
 <script>
-  const squares = document.querySelectorAll('.square');
+ const squares = document.querySelectorAll('.square');
 const resultElement = document.querySelector('#result');
 let xIsNext = true;
 
@@ -134,6 +134,7 @@ function resetBoard() {
     square.addEventListener('click', handleClick);
   });
 
+  xIsNext = true;
   resultElement.textContent = '';
 }
 
