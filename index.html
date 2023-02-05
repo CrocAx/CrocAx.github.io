@@ -15,6 +15,7 @@ body {
   height: 100vh;
   background-color: #333;
   color: #fff;
+  transition: background-color 1s ease;
 }
 
 .board {
@@ -205,6 +206,16 @@ function resetBoard() {
 
 Array.from(squares).forEach(square => square.addEventListener('click', handleClick));
 resetButton.addEventListener('click', resetBoard);
+
+//Background
+
+function changeBackgroundColor() {
+    const colors = ['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#00ffff', '#ff00ff'];
+    const randomColor = colors[Math.floor(Math.random() * colors.length)];
+    document.body.style.backgroundColor = randomColor;
+  }
+
+  setInterval(changeBackgroundColor, 1000);
 
 </script>
 
