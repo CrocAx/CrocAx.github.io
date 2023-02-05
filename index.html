@@ -6,43 +6,47 @@
 </head>
 
 <style>
-.container {
+body {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  flex-direction: column;
 }
 
 .board {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(3, 1fr);
+  display: flex;
+  flex-wrap: wrap;
   width: 300px;
   height: 300px;
-  border: 1px solid black;
-  position: relative;
+  border: 2px solid #000;
 }
 
 .square {
-  border: 1px solid black;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 36px;
-}
-
-.win-line {
-  position: absolute;
+  width: 100px;
   height: 100px;
-  width: 3px;
-  background-color: green;
-  transform: rotate(45deg);
+  font-size: 36px;
+  font-weight: bold;
+  border: 1px solid #000;
+  box-sizing: border-box;
 }
 
 #result {
-  margin-top: 20px;
+  margin-top: 10px;
   font-size: 24px;
+}
+
+#reset-button {
+  margin-top: 10px;
+  padding: 10px 20px;
+  background-color: #000;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
 }
 
 </style>
