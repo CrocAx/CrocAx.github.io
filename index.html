@@ -129,6 +129,15 @@ body {
     
     <div class="watermark">Powered by ChatGPT</div>
   </div>
+
+  <div id="scoreboard">
+    <div id="x-score-container">
+      X: <span id="x-score"></span>
+    </div>
+    <div id="o-score-container">
+      O: <span id="o-score"></span>
+    </div>
+  </div>
   
 
 </body>
@@ -217,6 +226,36 @@ function changeBackgroundColor() {
 
   setInterval(changeBackgroundColor, 1000);
 
+// Function to update the score in session storage
+function updateScore(result) {
+  let xScore = sessionStorage.getItem("xScore") || 0;
+  let oScore = sessionStorage.getItem("oScore") || 0;
+  
+  if (result === "X") {
+    xScore++;
+    sessionStorage.setItem("xScore", xScore);
+  } else if (result === "O") {
+    oScore++;
+    sessionStorage.setItem("oScore", oScore);
+  }
+}
+
+// Function to display the score from session storage
+function displayScore() {
+  let xScore = sessionStorage.getItem("xScore") || 0;
+  let oScore = sessionStorage.getItem("oScore") || 0;
+  
+  document.querySelector("#x-score").textContent = xScore;
+  document.querySelector("#o-score").textContent = oScore;
+}
+
+// Call the displayScore function to show the score on page load
+displayScore();
+
+// Call the updateScore function when a player wins or there is a draw
+if (result === "X" || result === "O" || result === "Draw") {
+  updateScore(result);
+}
 </script>
 
 </html>
