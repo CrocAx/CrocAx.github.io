@@ -53,18 +53,35 @@ body {
     text-shadow: 1px 1px #000;
 }
 
-#reset-button {
-  margin-top: 10px;
-  padding: 10px 20px;
-  background-color: #000;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  font-size: 16px;
-  cursor: pointer;
-  font-family: "MedievalSharp", sans-serif;
-  box-shadow: 0px 0px 10px 0px #000;
-}
+.reset-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+  }
+
+  .reset-button {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+
+  .reset-button:hover {
+    background-color: #fff;
+    color: #333;
+  }
+
+  .watermark {
+    margin-top: 20px;
+    font-size: 12px;
+    text-align: center;
+    color: #333;
+    text-shadow: 1px 1px #fff;
+  }
 
 .header {
     display: flex;
@@ -102,7 +119,11 @@ body {
       <div class="square"></div>
     </div>
     <div id="result"></div>
-    <button id="reset-button">Reset Board</button>
+    <div class="reset-container">
+      <button class="reset-button" onclick="resetBoard()">Reset Board</button>
+    </div>
+    
+    <div class="watermark">Powered by ChatGPT</div>
   </div>
   
 
