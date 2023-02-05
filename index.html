@@ -13,7 +13,8 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: #f2f2f2;
+  background-color: #333;
+  color: #fff;
 }
 
 .board {
@@ -61,26 +62,28 @@ body {
   }
 
   .reset-button {
-    background-color: #333;
-    color: #fff;
-    border: none;
+    background-color: #fff;
+    color: #333;
+    border: 2px solid #333;
     padding: 10px 20px;
-    border-radius: 5px;
+    border-radius: 20px;
     cursor: pointer;
     font-size: 16px;
+    transition: all 0.3s ease;
   }
 
   .reset-button:hover {
-    background-color: #fff;
-    color: #333;
+    background-color: #333;
+    color: #fff;
+    border-color: #fff;
   }
 
   .watermark {
     margin-top: 20px;
     font-size: 12px;
     text-align: center;
-    color: #333;
-    text-shadow: 1px 1px #fff;
+    color: #fff;
+    text-shadow: 1px 1px #333;
   }
 
 .header {
