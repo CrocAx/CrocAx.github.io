@@ -69,25 +69,21 @@
 </body>
 
 <script>
-const squares = document.querySelectorAll('.square');
+  const squares = document.querySelectorAll('.square');
 const resultElement = document.querySelector('#result');
-const resetButton = document.querySelector('#reset-button');
 let xIsNext = true;
-
-for (const square of squares) {
-  square.addEventListener('click', handleClick);
-}
-
-resetButton.addEventListener('click', resetBoard);
 
 function handleClick(event) {
   const square = event.target;
-  const currentValue = square.textContent;
-  if (currentValue) {
+  const currentText = square.textContent;
+
+  if (currentText === 'X' || currentText === 'O') {
     return;
   }
+
   square.textContent = xIsNext ? 'X' : 'O';
   xIsNext = !xIsNext;
+
   checkForWin();
 }
 
@@ -133,17 +129,15 @@ function checkForWin() {
 }
 
 function resetBoard() {
-  for (const square of squares) {
+  squares.forEach(square => {
     square.textContent = '';
-    square.classList.remove('winner');
-  }
+    square.addEventListener('click', handleClick);
+  });
+
   resultElement.textContent = '';
-  xIsNext = true;
-  const lines = document.querySelectorAll('.win-line');
-  for (const line of lines) {
-    line.remove();
-  }
 }
+
+squares.forEach(square => square.addEventListener('click', handleClick));
 
 </script>
 
