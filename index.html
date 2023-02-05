@@ -119,13 +119,13 @@ function checkForWin() {
     }
   }
 
-  if (!isWin && squares.every(square => square.textContent !== '')) {
-    resultElement.textContent = 'Draw!';
-  }
+  if (!isWin && Array.from(squares).every(square => square.textContent !== '')) {
+  resultElement.textContent = 'Draw!';
+}
 
-  if (isWin || squares.every(square => square.textContent !== '')) {
-    squares.forEach(square => square.removeEventListener('click', handleClick));
-  }
+if (isWin || Array.from(squares).every(square => square.textContent !== '')) {
+  Array.from(squares).forEach(square => square.removeEventListener('click', handleClick));
+}
 }
 
 function resetBoard() {
