@@ -44,9 +44,9 @@
 <script>
 const squares = document.querySelectorAll('.square');
 const resultElement = document.getElementById('result');
-const resetButton = document.getElementById('reset-button');
-const xScore = document.getElementById('x-score');
-const oScore = document.getElementById('o-score');
+const resetButton = document.querySelector('.reset-button');
+const xScore = document.getElementById('x-wins');
+const oScore = document.getElementById('o-wins');
 
 let xWins = 0;
 let oWins = 0;
@@ -56,7 +56,7 @@ let isWin = false;
 Array.from(squares).forEach(square => square.addEventListener('click', handleClick));
 resetButton.addEventListener('click', resetBoard);
 
-function checkForWin() {
+function checkWin() {
   const lines = [    [0, 1, 2],
     [3, 4, 5],
     [6, 7, 8],
@@ -85,10 +85,10 @@ function checkForDraw() {
 function updateScore(winner) {
   if (winner === 'X') {
     xWins++;
-    xScore.textContent = xWins;
+    xScore.textContent = `X wins: ${xWins}`;
   } else if (winner === 'O') {
     oWins++;
-    oScore.textContent = oWins;
+    oScore.textContent = `O wins: ${oWins}`;
   }
 }
 
@@ -114,7 +114,7 @@ function handleClick(e) {
   square.textContent = isXNext ? 'X' : 'O';
   isXNext = !isXNext;
 
-  checkForWin();
+  checkWin();
   checkForDraw();
 }
 
