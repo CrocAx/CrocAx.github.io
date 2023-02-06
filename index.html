@@ -58,6 +58,17 @@ const resetButton = document.querySelector('.reset-button');
 const xScore = document.getElementById('x-wins');
 const oScore = document.getElementById('o-wins');
 
+// Array of all possible winning combinations
+const winningCombinations = [  [0, 1, 2],
+  [3, 4, 5],
+  [6, 7, 8],
+  [0, 3, 6],
+  [1, 4, 7],
+  [2, 5, 8],
+  [0, 4, 8],
+  [2, 4, 6]
+];
+
 let xWins = 0;
 let oWins = 0;
 let isXNext = true;
@@ -128,6 +139,80 @@ function handleClick(e) {
   checkWin();
   checkForDraw();
 }
+
+// Function to check if there's a winner
+function checkWinner(squares) {
+  // Loop through the possible winning combinations
+  for (let i = 0; i < winningCombinations.length; i++) {
+    const [a, b, c] = winningCombinations[i];
+    if (
+      squares[a].textContent === squares[b].textContent &&
+      squares[a].textContent === squares[c].textContent &&
+      squares[a].textContent !== ""
+    ) {
+      return squares[a].textContent;
+    }
+  }
+  return null;
+}
+
+// Function to strike a line for the winner
+function strikeLineForWinner(winner) {
+  for (let i = 0; i < winningCombinations.length; i++) {
+    const [a, b, c] = winningCombinations[i];
+    if (squares[a].textContent === winner && squares[b].textContent === winner && squares[c].textContent === winner) {
+      squares[a].classList.add('winner-line');
+      squares[b].classList.add('winner-line');
+      squares[c].classList.add('winner-line');
+
+      if (a === 0 && c === 2) {
+        squares[a].classList.add('winner-line-diagonal-1');
+        squares[b].classList.add('winner-line-diagonal-1');
+        squares[c].classList.add('winner-line-diagonal-1');
+      } else if (a === 2 && c === 0) {
+        squares[a].classList.add('winner-line-diagonal-2');
+        squares[b].classList.add('winner-line-diagonal-2');
+        squares[c].classList.add('winner-line-diagonal-2');
+      } else if (a === 0 || a === 3 || a === 6) {
+        squares[a].classList.add('winner-line-column-1');
+        squares[b].classList.add('winner-line-column-1');
+        squares[c].classList.add('winner-line-column-1');
+      } else if (a === 1 || a === 4 || a === 7) {
+        squares[a].classList.add('winner-line-column-2');
+        squares[b].classList.add('winner-line-column-2');
+        squares[c].classList.add('winner-line-column-2');
+      } else if (a === 2 || a === 5 || a === 8) {
+        squares[a].classList.add('winner-line-column-3');
+        squares[b].classList.add('winner-line-column-3');
+        squares[b].classList.add('winner-line-column-3');
+        squares[c].classList.add('winner-line-column-3');
+      } else if (a === 0 || a === 1 || a === 2) {
+        squares[a].classList.add('winner-line-row-1');
+        squares[b].classList.add('winner-line-row-1');
+        squares[c].classList.add('winner-line-row-1');
+      } else if (a === 3 || a === 4 || a === 5) {
+        squares[a].classList.add('winner-line-row-2');
+        squares[b].classList.add('winner-line-row-2');
+        squares[c].classList.add('winner-line-row-2');
+      } else if (a === 6 || a === 7 || a === 8) {
+        squares[a].classList.add('winner-line-row-3');
+        squares[b].classList.add('winner-line-row-3');
+        squares[c].classList.add('winner-line-row-3');
+      }
+        break;
+    }
+  }
+}
+
+// Call the function when there's a winner
+const winner = checkWinner(squares);
+if (winner) {
+strikeLineForWinner(winner);
+}
+
+
+
+
 
 </script>
 
