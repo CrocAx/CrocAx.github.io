@@ -34,19 +34,24 @@
     <div class="watermark">Powered by ChatGPT</div>
   </div>
 <br>
-<p id="x-wins">X wins: 0</p>
-<p id="o-wins">O wins: 0</p>
+  <div id="scoreboard">
+    <div id="x-score-container">
+      X: <span id="x-score"></span>
+    </div>
+    <div id="o-score-container">
+      O: <span id="o-score"></span>
+    </div>
+  </div>
+  
 </body>
 
 <script>
-const squares = document.querySelectorAll('.square');
+  const squares = document.querySelectorAll('.square');
 const resultElement = document.querySelector('#result');
 const resetButton = document.querySelector('#reset-button');
 let xIsNext = true;
 let xWins = 0;
 let oWins = 0;
-const xWinsElement = document.querySelector("#x-wins");
-const oWinsElement = document.querySelector("#o-wins");
 
 const checkWin = () => {
   const squares = Array.from(document.querySelectorAll(".square"));
@@ -99,11 +104,11 @@ const checkWin = () => {
   if (!isWin && squares.every(square => square.textContent !== "")) {
     resultElement.textContent = "It's a draw!";
   }
+};
 
   if (isWin || Array.from(squares).every(square => square.textContent !== '')) {
     Array.from(squares).forEach(square => square.removeEventListener('click', handleClick));
   }
-};
 
 Array.from(squares).forEach(square => square.addEventListener('click', handleClick));
 resetButton.addEventListener('click', resetBoard);
