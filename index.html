@@ -104,11 +104,11 @@ const checkWin = () => {
   if (!isWin && squares.every(square => square.textContent !== "")) {
     resultElement.textContent = "It's a draw!";
   }
-};
 
   if (isWin || Array.from(squares).every(square => square.textContent !== '')) {
     Array.from(squares).forEach(square => square.removeEventListener('click', handleClick));
   }
+}
 
 Array.from(squares).forEach(square => square.addEventListener('click', handleClick));
 resetButton.addEventListener('click', resetBoard);
