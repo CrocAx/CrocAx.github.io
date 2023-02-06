@@ -34,99 +34,76 @@
     <div class="watermark">Powered by ChatGPT</div>
   </div>
 <br>
-  <div id="scoreboard">
-    <div id="x-score-container">
-      X: <span id="x-score"></span>
-    </div>
-    <div id="o-score-container">
-      O: <span id="o-score"></span>
-    </div>
-  </div>
-  
+<p id="x-wins">X wins: 0</p>
+<p id="o-wins">O wins: 0</p>
 </body>
 
 <script>
-  const squares = document.querySelectorAll('.square');
+const squares = document.querySelectorAll('.square');
 const resultElement = document.querySelector('#result');
 const resetButton = document.querySelector('#reset-button');
 let xIsNext = true;
 let xWins = 0;
 let oWins = 0;
+const xWinsElement = document.querySelector("#x-wins");
+const oWinsElement = document.querySelector("#o-wins");
 
-function handleClick(event) {
-  const square = event.target;
-  const currentText = square.textContent;
-
-  if (currentText === 'X' || currentText === 'O') {
-    return;
-  }
-
-  square.textContent = xIsNext ? 'X' : 'O';
-  xIsNext = !xIsNext;
-
-  checkForWin();
-}
-
-function checkForWin() {
-  const winningCombinations = [
-    [0, 1, 2],
-    [3, 4, 5],
-    [6, 7, 8],
-    [0, 3, 6],
-    [1, 4, 7],
-    [2, 5, 8],
-    [0, 4, 8],
-    [2, 4, 6]
-  ];
-
+const checkWin = () => {
+  const squares = Array.from(document.querySelectorAll(".square"));
   let isWin = false;
 
-  for (const combination of winningCombinations) {
-    const [a, b, c] = combination;
-    const squareA = squares[a];
-    const squareB = squares[b];
-    const squareC = squares[c];
+  const squareA = squares[0];
+  const squareB = squares[1];
+  const squareC = squares[2];
+  const squareD = squares[3];
+  const squareE = squares[4];
+  const squareF = squares[5];
+  const squareG = squares[6];
+  const squareH = squares[7];
+  const squareI = squares[8];
 
-    if (squareA.textContent === '') {
-      continue;
+  const winningCombinations = [
+    [squareA, squareB, squareC],
+    [squareD, squareE, squareF],
+    [squareG, squareH, squareI],
+    [squareA, squareD, squareG],
+    [squareB, squareE, squareH],
+    [squareC, squareF, squareI],
+    [squareA, squareE, squareI],
+    [squareC, squareE, squareG]
+  ];
+
+  for (let i = 0; i < winningCombinations.length; i++) {
+    const [squareA, squareB, squareC] = winningCombinations[i];
+
+    if (
+      squareA.textContent === squareB.textContent &&
+      squareA.textContent === squareC.textContent &&
+      squareA.textContent !== ""
+    ) {
+      resultElement.textContent = `${squareA.textContent} won!`;
+      isWin = true;
+
+      if (squareA.textContent === "X") {
+        xWins++;
+        xWinsElement.textContent = `X wins: ${xWins}`;
+      } else if (squareA.textContent === "O") {
+        oWins++;
+        oWinsElement.textContent = `O wins: ${oWins}`;
+      }
+
+      break;
     }
-
-    if (squareA.textContent === squareB.textContent &&
-      squareA.textContent === squareC.textContent) {
-    resultElement.textContent = `${squareA.textContent} won!`;
-    isWin = true;
-
-    if (squareA.textContent === "X") {
-      xWins++;
-      xWinsElement.textContent = xWins;
-    } else if (squareA.textContent === "O") {
-      oWins++;
-      oWinsElement.textContent = oWins;
-    }
-
-    break;
-  }
-    
   }
 
-  if (!isWin && Array.from(squares).every(square => square.textContent !== '')) {
-    resultElement.textContent = 'Draw!';
+  if (!isWin && squares.every(square => square.textContent !== "")) {
+    resultElement.textContent = "It's a draw!";
   }
 
   if (isWin || Array.from(squares).every(square => square.textContent !== '')) {
     Array.from(squares).forEach(square => square.removeEventListener('click', handleClick));
   }
-}
-
-function resetBoard() {
-  Array.from(squares).forEach(square => {
-    square.textContent = '';
-    square.addEventListener('click', handleClick);
-  });
-
-  xIsNext = true;
-  resultElement.textContent = '';
-}
+};
 
 Array.from(squares).forEach(square => square.addEventListener('click', handleClick));
 resetButton.addEventListener('click', resetBoard);
