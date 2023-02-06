@@ -137,3 +137,68 @@ body {
         font-weight: bold;
         margin: 10px 0;
     }
+
+    /* Winner chicken dinner */
+
+    .square.winner-line {
+        background-color: green;
+        border: 2px solid green;
+      }
+      
+      .winner-line-row-1 {
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 100%;
+      }
+      
+      .winner-line-row-2 {
+        top: 33.3%;
+        left: 0;
+        right: 0;
+        height: 100%;
+      }
+      
+      .winner-line-row-3 {
+        top: 66.6%;
+        left: 0;
+        right: 0;
+        height: 100%;
+      }
+      
+      .winner-line-column-1 {
+        top: 0;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+      }
+      
+      .winner-line-column-2 {
+        top: 0;
+        left: 33.3%;
+        bottom: 0;
+        width: 100%;
+      }
+      
+      .winner-line-column-3 {
+        top: 0;
+        left: 66.6%;
+        bottom: 0;
+        width: 100%;
+      }
+      
+      .winner-line-diagonal-1 {
+        top: 0;
+        left: 0;
+        bottom: 100%;
+        right: 100%;
+      }
+      
+      .winner-line-diagonal-2 {
+        top: 0;
+        right: 0;
+        bottom: 100%;
+        left: 100%;
+      }
+      
+    /* ~~~~~~~~~~~~~~~~~~~~~ */
