@@ -70,9 +70,8 @@ function handleClick(e) {
   checkForDraw();
 }
 
-function checkForWin() {
-  const winningCombinations = [
-    [0, 1, 2],
+function checkWin() {
+  const lines = [    [0, 1, 2],
     [3, 4, 5],
     [6, 7, 8],
     [0, 3, 6],
@@ -81,19 +80,11 @@ function checkForWin() {
     [0, 4, 8],
     [2, 4, 6],
   ];
-
-  for (let i = 0; i < winningCombinations.length; i++) {
-    const [a, b, c] = winningCombinations[i];
-    const squareA = squares[a];
-    const squareB = squares[b];
-    const squareC = squares[c];
-
-    if (squareA.textContent === squareB.textContent &&
-        squareA.textContent === squareC.textContent) {
-      resultElement.textContent = `${squareA.textContent} won!`;
+  for (let i = 0; i < lines.length; i++) {
+    const [a, b, c] = lines[i];
+    if (squares[a].textContent === squares[b].textContent && squares[a].textContent === squares[c].textContent && squares[a].textContent !== '') {
+      resultElement.textContent = `${squares[a].textContent} won!`;
       isWin = true;
-      disableSquares();
-      updateScore(squareA.textContent);
       break;
     }
   }
