@@ -56,7 +56,7 @@ let isWin = false;
 Array.from(squares).forEach(square => square.addEventListener('click', handleClick));
 resetButton.addEventListener('click', resetBoard);
 
-function checkWin() {
+function checkForWin() {
   const lines = [    [0, 1, 2],
     [3, 4, 5],
     [6, 7, 8],
