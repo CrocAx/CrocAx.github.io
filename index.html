@@ -159,6 +159,75 @@ function updateScore(result) {
   if (result === "X" || result === "O" || result === "Draw") {
     updateScore(result);
   }
+
+let xWins = 0;
+let oWins = 0;
+
+function checkForWin() {
+    if (checkWin(0, 1, 2)) {
+        displayResult('X');
+        xWins++;
+    } else if (checkWin(3, 4, 5)) {
+        displayResult('X');
+        xWins++;
+    } else if (checkWin(6, 7, 8)) {
+        displayResult('X');
+        xWins++;
+    } else if (checkWin(0, 3, 6)) {
+        displayResult('X');
+        xWins++;
+    } else if (checkWin(1, 4, 7)) {
+        displayResult('X');
+        xWins++;
+    } else if (checkWin(2, 5, 8)) {
+        displayResult('X');
+        xWins++;
+    } else if (checkWin(0, 4, 8)) {
+        displayResult('X');
+        xWins++;
+    } else if (checkWin(2, 4, 6)) {
+        displayResult('X');
+        xWins++;
+    } else if (checkWin(0, 1, 2)) {
+        displayResult('O');
+        oWins++;
+    } else if (checkWin(3, 4, 5)) {
+        displayResult('O');
+        oWins++;
+    } else if (checkWin(6, 7, 8)) {
+        displayResult('O');
+        oWins++;
+    } else if (checkWin(0, 3, 6)) {
+        displayResult('O');
+        oWins++;
+    } else if (checkWin(1, 4, 7)) {
+        displayResult('O');
+        oWins++;
+    } else if (checkWin(2, 5, 8)) {
+        displayResult('O');
+        oWins++;
+    } else if (checkWin(0, 4, 8)) {
+        displayResult('O');
+        oWins++;
+    } else if (checkWin(2, 4, 6)) {
+        displayResult('O');
+        oWins++;
+    } else if (turns === 9) {
+        displayResult('Draw');
+    }
+}
+
+function displayResult(winner) {
+    let result = document.getElementById("result");
+    result.innerHTML = winner + " wins!";
+    result.style.display = "block";
+    let xScore = document.getElementById("x-wins");
+    xScore.innerHTML = "X: " + xWins;
+    let oScore = document.getElementById("o-wins");
+    oScore.innerHTML = "O: " + oWins;
+    let resetButton = document.getElementById("reset");
+    resetButton.style.display = "block";
+}
 </script>
 
 
