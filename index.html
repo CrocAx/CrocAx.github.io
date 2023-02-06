@@ -50,6 +50,8 @@
 const resultElement = document.querySelector('#result');
 const resetButton = document.querySelector('#reset-button');
 let xIsNext = true;
+let xWins = 0;
+let oWins = 0;
 
 function handleClick(event) {
   const square = event.target;
@@ -90,11 +92,21 @@ function checkForWin() {
     }
 
     if (squareA.textContent === squareB.textContent &&
-        squareA.textContent === squareC.textContent) {
-      resultElement.textContent = `${squareA.textContent} won!`;
-      isWin = true;
-      break;
+      squareA.textContent === squareC.textContent) {
+    resultElement.textContent = `${squareA.textContent} won!`;
+    isWin = true;
+
+    if (squareA.textContent === "X") {
+      xWins++;
+      xWinsElement.textContent = xWins;
+    } else if (squareA.textContent === "O") {
+      oWins++;
+      oWinsElement.textContent = oWins;
     }
+
+    break;
+  }
+    
   }
 
   if (!isWin && Array.from(squares).every(square => square.textContent !== '')) {
