@@ -71,6 +71,7 @@ function checkWin() {
     if (squares[a].textContent === squares[b].textContent && squares[a].textContent === squares[c].textContent && squares[a].textContent !== '') {
       resultElement.textContent = `${squares[a].textContent} won!`;
       isWin = true;
+      updateScore(squares[a].textContent);
       break;
     }
   }
