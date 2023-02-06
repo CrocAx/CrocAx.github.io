@@ -35,83 +35,97 @@
   </div>
 <br>
   <div id="scoreboard">
-    <div id="x-score-container">
-      X: <span id="x-score"></span>
-    </div>
-    <div id="o-score-container">
-      O: <span id="o-score"></span>
-    </div>
+    <p id="x-wins">X wins: 0</p>
+    <p id="o-wins">O wins: 0</p>
   </div>
   
 </body>
 
 <script>
-  const squares = document.querySelectorAll('.square');
-const resultElement = document.querySelector('#result');
-const resetButton = document.querySelector('#reset-button');
-let xIsNext = true;
+const squares = document.querySelectorAll('.square');
+const resultElement = document.getElementById('result');
+const resetButton = document.getElementById('reset-button');
+const xScore = document.getElementById('x-score');
+const oScore = document.getElementById('o-score');
+
 let xWins = 0;
 let oWins = 0;
-
-const checkWin = () => {
-  const squares = Array.from(document.querySelectorAll(".square"));
-  let isWin = false;
-
-  const squareA = squares[0];
-  const squareB = squares[1];
-  const squareC = squares[2];
-  const squareD = squares[3];
-  const squareE = squares[4];
-  const squareF = squares[5];
-  const squareG = squares[6];
-  const squareH = squares[7];
-  const squareI = squares[8];
-
-  const winningCombinations = [
-    [squareA, squareB, squareC],
-    [squareD, squareE, squareF],
-    [squareG, squareH, squareI],
-    [squareA, squareD, squareG],
-    [squareB, squareE, squareH],
-    [squareC, squareF, squareI],
-    [squareA, squareE, squareI],
-    [squareC, squareE, squareG]
-  ];
-
-  for (let i = 0; i < winningCombinations.length; i++) {
-    const [squareA, squareB, squareC] = winningCombinations[i];
-
-    if (
-      squareA.textContent === squareB.textContent &&
-      squareA.textContent === squareC.textContent &&
-      squareA.textContent !== ""
-    ) {
-      resultElement.textContent = `${squareA.textContent} won!`;
-      isWin = true;
-
-      if (squareA.textContent === "X") {
-        xWins++;
-        xWinsElement.textContent = `X wins: ${xWins}`;
-      } else if (squareA.textContent === "O") {
-        oWins++;
-        oWinsElement.textContent = `O wins: ${oWins}`;
-      }
-
-      break;
-    }
-  }
-
-  if (!isWin && squares.every(square => square.textContent !== "")) {
-    resultElement.textContent = "It's a draw!";
-  }
-
-  if (isWin || Array.from(squares).every(square => square.textContent !== '')) {
-    Array.from(squares).forEach(square => square.removeEventListener('click', handleClick));
-  }
-}
+let isXNext = true;
+let isWin = false;
 
 Array.from(squares).forEach(square => square.addEventListener('click', handleClick));
 resetButton.addEventListener('click', resetBoard);
+
+function handleClick(e) {
+  const square = e.target;
+
+  if (isWin || square.textContent) {
+    return;
+  }
+
+  square.textContent = isXNext ? 'X' : 'O';
+  isXNext = !isXNext;
+
+  checkForWin();
+  checkForDraw();
+}
+
+function checkForWin() {
+  const winningCombinations = [
+    [0, 1, 2],
+    [3, 4, 5],
+    [6, 7, 8],
+    [0, 3, 6],
+    [1, 4, 7],
+    [2, 5, 8],
+    [0, 4, 8],
+    [2, 4, 6],
+  ];
+
+  for (let i = 0; i < winningCombinations.length; i++) {
+    const [a, b, c] = winningCombinations[i];
+    const squareA = squares[a];
+    const squareB = squares[b];
+    const squareC = squares[c];
+
+    if (squareA.textContent === squareB.textContent &&
+        squareA.textContent === squareC.textContent) {
+      resultElement.textContent = `${squareA.textContent} won!`;
+      isWin = true;
+      disableSquares();
+      updateScore(squareA.textContent);
+      break;
+    }
+  }
+}
+
+function checkForDraw() {
+  if (!isWin && Array.from(squares).every(square => square.textContent)) {
+    resultElement.textContent = 'Draw!';
+  }
+}
+
+function updateScore(winner) {
+  if (winner === 'X') {
+    xWins++;
+    xScore.textContent = xWins;
+  } else if (winner === 'O') {
+    oWins++;
+    oScore.textContent = oWins;
+  }
+}
+
+function disableSquares() {
+  Array.from(squares).forEach(square => square.removeEventListener('click', handleClick));
+}
+
+function resetBoard() {
+  Array.from(squares).forEach(square => square.textContent = '');
+  resultElement.textContent = '';
+  isXNext = true;
+  isWin = false;
+  Array.from(squares).forEach(square => square.addEventListener('click', handleClick));
+}
 
 </script>
 
