@@ -20,7 +20,7 @@ if (localStorage.getItem("todo")) {
   }).disableSelection();
   
   // Add new task
-  $(document).on("keypress", ".addTask", function (event) {
+  $(document).on("keypress", ".new-task", function (event) {
 	if (event.which == 13) {
 	  event.preventDefault(); // Prevent form submission
 	  var taskText = $(this).val();
@@ -45,7 +45,7 @@ if (localStorage.getItem("todo")) {
 	$(this)
 	  .siblings("li")
 	  .html(
-		"<input type='text' class='editTask' value='" +
+		"<input type='text' class='edit-task' value='" +
 		  taskText +
 		  "'> <button class='save'>&#10003;</button>"
 	  );
@@ -54,7 +54,10 @@ if (localStorage.getItem("todo")) {
   
   // Save edited task
   $(document).on("click", ".save", function () {
-	var taskText = $(this).siblings(".editTask").val();
+	var taskText = $(this).siblings(".edit-task").val();
 	$(this).parent().html(taskText + "<span class='edit'>&#9998;</span>");
+	var columnId = $(this).parents(".column").attr("id");
+	var tasks = $("#" + columnId + " .sortable").sortable("toArray");
+	localStorage.setItem(columnId, JSON.stringify(tasks));
   });
   
