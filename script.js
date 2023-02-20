@@ -12,7 +12,7 @@ if (localStorage.getItem("todo")) {
   // Make tasks sortable
   $(".sortable").sortable({
 	connectWith: ".sortable",
-	update: function () {
+	update: function (event, ui) {
 	  var columnId = $(this).parent().attr("id");
 	  var tasks = $("#" + columnId + " .sortable").sortable("toArray");
 	  localStorage.setItem(columnId, JSON.stringify(tasks));
