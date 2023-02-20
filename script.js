@@ -33,29 +33,23 @@ $(function() {
 		}
 	});
 
-	// Allow editing of tasks
-	$(document).on("click", ".edit", function() {
-		var taskText = $(this).siblings("li").text();
-		$(this).siblings("li").html("<input type='text' class='editTask' value='" + taskText + "'>");
-		$(this).hide();
-	});
+// Allow editing of tasks
+$(document).on("mousedown", ".edit", function() {
+	var taskText = $(this).siblings("li").text();
+	$(this).siblings("li").html("<input type='text' class='editTask' value='" + taskText + "'>");
+	$(this).hide();
+});
 
-	// Save edited task on Enter key press
-	$(document).on("keypress", ".editTask", function(event) {
-		if (event.which == 13) {
-			event.preventDefault(); // Prevent form submission
-			var newTaskText = $(this).val();
-			$(this).parent().html(newTaskText + "<span class='edit'>&#9998;</span>");
-			var columnId = $(this).parent().parent().attr("id");
-			var tasks = $("#" + columnId + " .sortable").sortable("toArray");
-			localStorage.setItem(columnId, JSON.stringify(tasks));
-		}
-	});
+// Save edited task on Enter key press
+$(document).on("keypress", ".editTask", function(event) {
+	if (event.which == 13) {
+		event.preventDefault(); // Prevent form submission
+		var newTaskText = $(this).val();
+		$(this).parent().html(newTaskText + "<span class='edit'>&#9998;</span>");
+		var columnId = $(this).parent().parent().attr("id");
+		var tasks = $("#" + columnId + " .sortable").sortable("toArray");
+		localStorage.setItem(columnId, JSON.stringify(tasks));
+	}
+});
 
-	// Prevent form submission when enter key is pressed on the form
-	$("form").keypress(function(event) {
-		if (event.which == 13) {
-			event.preventDefault();
-		}
-	});
 });
