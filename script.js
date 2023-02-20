@@ -55,6 +55,6 @@ if (localStorage.getItem("todo")) {
   // Save edited task
   $(document).on("click", ".save", function () {
 	var taskText = $(this).siblings(".editTask").val();
-	$(this).parent("li").html(taskText + "<span class='edit'>&#9998;</span>");
+	$(this).parent().html(taskText + "<span class='edit'>&#9998;</span>");
   });
   
