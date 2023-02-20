@@ -1,236 +1,38 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-  <title>AI TIC TAC TOE</title>
-  <link href="https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/Styles.css" type="text/css" />
-  <!-- <script src="js/Main.js"></script> -->
-  
+	<title>Kanban Board</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
-
 <body>
-  <div class="header">
-    <h1>Tic Tac Toe</h1>
-  </div>
-
-  
-
-  <div class="container">
-    <div onload="startTime()">
-      <div id="clock"></div>
-    </div>
-    <div id="scoreboard">
-      <div id="scoreboard-header">Scoreboard</div>
-      <div id="scoreboard-body">
-        <div id="x-wins">
-          <div class="text">X wins: 0</div><span>
-        </div>
-        <div id="o-wins">
-          <div class="text">O wins: 0</div>
-        </div>
-      </div>
-    </div>
-    <br>
-    <br>
-    <div class="board">
-      <div class="square" id="square-1"></div>
-      <div class="square" id="square-2"></div>
-      <div class="square" id="square-3"></div>
-      <div class="square" id="square-4"></div>
-      <div class="square" id="square-5"></div>
-      <div class="square" id="square-6"></div>
-      <div class="square" id="square-7"></div>
-      <div class="square" id="square-8"></div>
-      <div class="square" id="square-9"></div>
-    </div>
-    <div id="result"></div>
-    <div class="reset-container">
-      <button class="reset-button" onclick="resetBoard()">Reset Board</button>
-    </div>
-    
-    <div class="watermark">Powered by ChatGPT</div>
-  </div>
-  
+	<div class="container">
+		<div class="column" id="todo">
+			<h2>To Do</h2>
+			<ul class="sortable">
+				<li>Task 1</li>
+				<li>Task 2</li>
+				<li>Task 3</li>
+			</ul>
+			<input type="text" placeholder="Add new task">
+		</div>
+		<div class="column" id="inprogress">
+			<h2>In Progress</h2>
+			<ul class="sortable">
+				<li>Task 4</li>
+				<li>Task 5</li>
+			</ul>
+			<input type="text" placeholder="Add new task">
+		</div>
+		<div class="column" id="done">
+			<h2>Done</h2>
+			<ul class="sortable">
+				<li>Task 6</li>
+			</ul>
+			<input type="text" placeholder="Add new task">
+		</div>
+	</div>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+	<script src="script.js"></script>
 </body>
-
-<script>
-const squares = document.querySelectorAll('.square');
-const resultElement = document.getElementById('result');
-const resetButton = document.querySelector('.reset-button');
-const xScore = document.getElementById('x-wins');
-const oScore = document.getElementById('o-wins');
-
-// Array of all possible winning combinations
-const winningCombinations = [  [0, 1, 2],
-  [3, 4, 5],
-  [6, 7, 8],
-  [0, 3, 6],
-  [1, 4, 7],
-  [2, 5, 8],
-  [0, 4, 8],
-  [2, 4, 6]
-];
-
-let xWins = 0;
-let oWins = 0;
-let isXNext = true;
-let isWin = false;
-
-Array.from(squares).forEach(square => square.addEventListener('click', handleClick));
-resetButton.addEventListener('click', resetBoard);
-
-function checkWin() {
-  const lines = [    [0, 1, 2],
-    [3, 4, 5],
-    [6, 7, 8],
-    [0, 3, 6],
-    [1, 4, 7],
-    [2, 5, 8],
-    [0, 4, 8],
-    [2, 4, 6],
-  ];
-  for (let i = 0; i < lines.length; i++) {
-    const [a, b, c] = lines[i];
-    if (squares[a].textContent === squares[b].textContent && squares[a].textContent === squares[c].textContent && squares[a].textContent !== '') {
-      resultElement.textContent = `${squares[a].textContent} won!`;
-      isWin = true;
-      updateScore(squares[a].textContent);
-      break;
-    }
-  }
-}
-
-function checkForDraw() {
-  if (!isWin && Array.from(squares).every(square => square.textContent)) {
-    resultElement.textContent = 'Draw!';
-  }
-}
-
-function updateScore(winner) {
-  if (winner === 'X') {
-    xWins++;
-    xScore.textContent = `X wins: ${xWins}`;
-  } else if (winner === 'O') {
-    oWins++;
-    oScore.textContent = `O wins: ${oWins}`;
-  }
-}
-
-function disableSquares() {
-  Array.from(squares).forEach(square => square.removeEventListener('click', handleClick));
-}
-
-function resetBoard() {
-  Array.from(squares).forEach(square => square.textContent = '');
-  resultElement.textContent = '';
-  isXNext = true;
-  isWin = false;
-  Array.from(squares).forEach(square => square.addEventListener('click', handleClick));
-}
-
-function handleClick(e) {
-  const square = e.target;
-
-  if (isWin || square.textContent) {
-    return;
-  }
-
-  square.textContent = isXNext ? 'X' : 'O';
-  isXNext = !isXNext;
-
-  checkWin();
-  checkForDraw();
-}
-
-// Function to check if there's a winner
-function checkWinner(squares) {
-  // Loop through the possible winning combinations
-  for (let i = 0; i < winningCombinations.length; i++) {
-    const [a, b, c] = winningCombinations[i];
-    if (
-      squares[a].textContent === squares[b].textContent &&
-      squares[a].textContent === squares[c].textContent &&
-      squares[a].textContent !== ""
-    ) {
-      return squares[a].textContent;
-    }
-  }
-  return null;
-}
-
-// Function to strike a line for the winner
-function strikeLineForWinner(winner) {
-  for (let i = 0; i < winningCombinations.length; i++) {
-    const [a, b, c] = winningCombinations[i];
-    if (squares[a].textContent === winner && squares[b].textContent === winner && squares[c].textContent === winner) {
-      squares[a].classList.add('winner-line');
-      squares[b].classList.add('winner-line');
-      squares[c].classList.add('winner-line');
-
-      if (a === 0 && c === 2) {
-        squares[a].classList.add('winner-line-diagonal-1');
-        squares[b].classList.add('winner-line-diagonal-1');
-        squares[c].classList.add('winner-line-diagonal-1');
-      } else if (a === 2 && c === 0) {
-        squares[a].classList.add('winner-line-diagonal-2');
-        squares[b].classList.add('winner-line-diagonal-2');
-        squares[c].classList.add('winner-line-diagonal-2');
-      } else if (a === 0 || a === 3 || a === 6) {
-        squares[a].classList.add('winner-line-column-1');
-        squares[b].classList.add('winner-line-column-1');
-        squares[c].classList.add('winner-line-column-1');
-      } else if (a === 1 || a === 4 || a === 7) {
-        squares[a].classList.add('winner-line-column-2');
-        squares[b].classList.add('winner-line-column-2');
-        squares[c].classList.add('winner-line-column-2');
-      } else if (a === 2 || a === 5 || a === 8) {
-        squares[a].classList.add('winner-line-column-3');
-        squares[b].classList.add('winner-line-column-3');
-        squares[b].classList.add('winner-line-column-3');
-        squares[c].classList.add('winner-line-column-3');
-      } else if (a === 0 || a === 1 || a === 2) {
-        squares[a].classList.add('winner-line-row-1');
-        squares[b].classList.add('winner-line-row-1');
-        squares[c].classList.add('winner-line-row-1');
-      } else if (a === 3 || a === 4 || a === 5) {
-        squares[a].classList.add('winner-line-row-2');
-        squares[b].classList.add('winner-line-row-2');
-        squares[c].classList.add('winner-line-row-2');
-      } else if (a === 6 || a === 7 || a === 8) {
-        squares[a].classList.add('winner-line-row-3');
-        squares[b].classList.add('winner-line-row-3');
-        squares[c].classList.add('winner-line-row-3');
-      }
-        break;
-    }
-  }
-}
-
-// Call the function when there's a winner
-const winner = checkWinner(squares);
-if (winner) {
-strikeLineForWinner(winner);
-}
-
-
-
-function startTime() {
-        var today = new Date();
-        var h = today.getHours();
-        var m = today.getMinutes();
-        var s = today.getSeconds();
-        m = checkTime(m);
-        s = checkTime(s);
-        document.getElementById("clock").innerHTML = h + ":" + m + ":" + s;
-        var t = setTimeout(startTime, 500);
-      }
-      function checkTime(i) {
-        if (i < 10) {i = "0" + i};
-        return i;
-      }
-
-</script>
-
-
 </html>
