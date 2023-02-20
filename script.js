@@ -4,7 +4,7 @@ $(function() {
 		var columnId = $(this).parent().attr("id");
 		var tasks = JSON.parse(localStorage.getItem(columnId)) || [];
 		for (var i = 0; i < tasks.length; i++) {
-			$(this).append("<li>" + tasks[i] + "</li>");
+			$(this).append("<li>" + tasks[i] + "<span class='edit'>&#9998;</span></li>");
 		}
 	});
 
@@ -25,9 +25,27 @@ $(function() {
 	$("input[type='text']").keypress(function(event) {
 		if (event.which == 13) {
 			var task = $(this).val();
-			$(this).siblings(".sortable").append("<li>" + task + "</li>");
+			$(this).siblings(".sortable").append("<li>" + task + "<span class='edit'>&#9998;</span></li>");
 			$(this).val("");
 			var columnId = $(this).parent().attr("id");
+			var tasks = $("#" + columnId + " .sortable").sortable("toArray");
+			localStorage.setItem(columnId, JSON.stringify(tasks));
+		}
+	});
+
+	// Allow editing of tasks
+	$(document).on("click", ".edit", function() {
+		var taskText = $(this).siblings("li").text();
+		$(this).siblings("li").html("<input type='text' class='editTask' value='" + taskText + "'>");
+		$(this).hide();
+	});
+
+	// Save edited task on Enter key press
+	$(document).on("keypress", ".editTask", function(event) {
+		if (event.which == 13) {
+			var newTaskText = $(this).val();
+			$(this).parent().html(newTaskText + "<span class='edit'>&#9998;</span>");
+			var columnId = $(this).parent().parent().attr("id");
 			var tasks = $("#" + columnId + " .sortable").sortable("toArray");
 			localStorage.setItem(columnId, JSON.stringify(tasks));
 		}
