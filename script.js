@@ -25,4 +25,11 @@ $(function() {
 	$("input[type='text']").keypress(function(event) {
 		if (event.which == 13) {
 			var task = $(this).val();
-			$(this).siblings(".sortable").append("<li>" + task
+			$(this).siblings(".sortable").append("<li>" + task + "</li>");
+			$(this).val("");
+			var columnId = $(this).parent().attr("id");
+			var tasks = $("#" + columnId + " .sortable").sortable("toArray");
+			localStorage.setItem(columnId, JSON.stringify(tasks));
+		}
+	});
+});
